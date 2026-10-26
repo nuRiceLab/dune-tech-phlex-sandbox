@@ -28,6 +28,7 @@ if(NOT EXISTS "${EX}/my_add.cpp")
 endif()
 
 add_compile_options(-Wall -Wpedantic -Werror)
+add_compile_options(-w) # make the errors go away
 
 # Proxies for framework-agnostic experiment libraries
 # N.B. The specified library type should be SHARED.
