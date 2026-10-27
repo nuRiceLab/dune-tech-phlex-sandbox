@@ -19,6 +19,9 @@ for readme in sorted(pathlib.Path("contributions").glob("*/README.md")):
     match = re.search(r"^## One word for today\s*\n+(.+)$", readme.read_text(), re.MULTILINE)
     if match:
         word = match.group(1).strip().strip("*_`.!").lower()
+        # Keep a word written inside the template brackets, "<good>", but not the placeholder itself
+        if word.startswith("<") and word.endswith(">") and "a single word" not in word:
+            word = word.strip("<> ").strip("*_`.!")
         if word and not word.startswith("<"):
             words[word] += 1
 
